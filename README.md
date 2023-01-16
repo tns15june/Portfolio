@@ -1,9 +1,9 @@
 
 # Tarkeshwar Narayan Sharma
-Data Scientist | NLP | Deep Learning | Machine Learning | Artificial intelligence
+Data Scientist | NLP | Deep Learning | Machine Learning | Artificial intelligence | Large Language Model | Prompt Engineering
 
 # Professional summary
-* Data Scientist with over 5 years of cross-industry experience in developing end-to-end data science solutions and providing actionable business insights.
+* Data Scientist with over 6 years of cross-industry experience in developing end-to-end data science solutions and providing actionable business insights.
 * Proficient in building statistical and predictive models using Python in Retail, E-commerce, Healthcare and Finance industries. Fortes include Machine-learning, Statistics, Deep Learning and Natural Language Processing
 
 # [Project 1: Skill extraction module]
