@@ -9,7 +9,7 @@ NLP | Deep Learning | Machine Learning | Artificial intelligence | Large Languag
 # [Project 1: Skill extraction module]
 ![alt text](Job_Skill_Extractor.png)
 
-This project automates the support tickets with the help of Natural Language Processing.
-* **Python libraries used:** spaCy
-* **Input:** Job Description
+Extraction of skills from the Job Description and Resume.
+* **Python libraries used:** To be 
+* **Input:** Job Description and Resume
 * **Output:** skill
