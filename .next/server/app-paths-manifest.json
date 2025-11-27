@@ -1,0 +1,9 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(main)/blog/[slug]/page": "app/(main)/blog/[slug]/page.js",
+  "/(main)/about/page": "app/(main)/about/page.js",
+  "/(main)/projects/[slug]/page": "app/(main)/projects/[slug]/page.js",
+  "/(main)/blog/page": "app/(main)/blog/page.js",
+  "/(main)/projects/page": "app/(main)/projects/page.js",
+  "/(main)/page": "app/(main)/page.js"
+}

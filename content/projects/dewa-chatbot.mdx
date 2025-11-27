@@ -1,0 +1,314 @@
+---
+title: "Multilingual Enterprise RAG Chatbot for DEWA"
+description: "Led development of enterprise chatbot using Claude 3 & Cohere v3 for Arabic/English document processing with AWS SageMaker, Lambda & SharePoint integration"
+publishedAt: "2024-06-15"
+tags: ["RAG", "LLM", "Multilingual NLP", "AWS", "Claude", "Enterprise AI"]
+featured: true
+company: "Topsource Worldwide (for DEWA)"
+impact: "Optimized response accuracy across multilingual queries for enterprise-scale deployment"
+---
+
+## Overview
+
+DEWA (Dubai Electricity and Water Authority) needed an enterprise-grade chatbot to serve both Arabic and English-speaking customers, capable of answering complex queries about services, billing, and technical documentation. The challenge was building a system that could understand multilingual queries, retrieve accurate information from thousands of internal documents, and provide contextually relevant answers in the user's preferred language.
+
+## The Challenge
+
+### Business Requirements
+- **Multilingual Support**: Seamless Arabic-English query handling
+- **Enterprise Scale**: Handle thousands of concurrent users
+- **Accuracy**: High precision answers from official documentation
+- **Security**: Strict data privacy and access control
+- **Integration**: Work with existing SharePoint document repository
+
+### Technical Challenges
+1. **Code-switching**: Users mixing Arabic and English in queries
+2. **Document Variety**: PDFs, Word docs, presentations in both languages
+3. **Latency**: Sub-3 second response time requirements
+4. **Cost**: Optimize LLM and embedding API costs at scale
+5. **Compliance**: Data residency and privacy regulations
+
+## Technical Architecture
+
+### System Components
+
+```
+┌─────────────┐
+│   User      │
+│  (AR/EN)    │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────┐
+│   API Gateway       │
+│   + Lambda          │
+└──────┬──────────────┘
+       │
+       ▼
+┌─────────────────────┐
+│  Language Detection │
+│  + Query Analysis   │
+└──────┬──────────────┘
+       │
+       ▼
+┌─────────────────────┐
+│  SharePoint         │
+│  Document Loader    │
+└──────┬──────────────┘
+       │
+       ▼
+┌─────────────────────┐
+│  Cohere v3          │
+│  Embeddings         │
+└──────┬──────────────┘
+       │
+       ▼
+┌─────────────────────┐
+│  Vector Search      │
+│  (FAISS/SageMaker)  │
+└──────┬──────────────┘
+       │
+       ▼
+┌─────────────────────┐
+│  Claude 3           │
+│  (via Bedrock)      │
+└──────┬──────────────┘
+       │
+       ▼
+┌─────────────────────┐
+│  Response +         │
+│  Analytics          │
+└─────────────────────┘
+```
+
+### Technology Stack
+
+**LLM & Embeddings:**
+- Claude 3 Sonnet (via AWS Bedrock)
+- Cohere v3 multilingual embeddings
+- Reranking with Cohere Rerank API
+
+**Infrastructure:**
+- AWS Lambda (serverless compute)
+- AWS SageMaker (embedding endpoints)
+- Amazon Bedrock (LLM access)
+- AWS API Gateway (REST API)
+- CloudWatch (monitoring)
+
+**Document Processing:**
+- SharePoint API integration
+- LangChain document loaders
+- Custom Arabic text processing
+
+**Vector Storage:**
+- FAISS for development
+- AWS SageMaker Feature Store for production
+
+## Implementation Deep Dive
+
+### 1. Document Processing Pipeline
+
+**Challenge**: SharePoint documents in mixed languages with varying formats.
+
+**Solution**: Built robust processing pipeline
+
+```python
+from langchain.document_loaders import SharePointLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+# Load from SharePoint
+loader = SharePointLoader(
+    client_id=SHAREPOINT_CLIENT_ID,
+    client_secret=SHAREPOINT_SECRET,
+    folder_path="/Shared Documents/DEWA"
+)
+documents = loader.load()
+
+# Smart chunking for Arabic + English
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=800,
+    chunk_overlap=150,
+    separators=["\n\n", "\n", ".", "،", " ", ""]  # Arabic + English
+)
+chunks = text_splitter.split_documents(documents)
+```
+
+**Key decisions:**
+- Smaller chunks (800 tokens) for better multilingual precision
+- Added Arabic punctuation to separators
+- Preserved document metadata (source, date, language)
+
+### 2. Multilingual Embedding Strategy
+
+**Challenge**: Queries in Arabic, English, or mixed need to match relevant docs.
+
+**Solution**: Cohere v3 multilingual embeddings
+
+```python
+import cohere
+
+co = cohere.Client(api_key=COHERE_KEY)
+
+# Embed documents
+doc_embeddings = co.embed(
+    texts=[chunk.page_content for chunk in chunks],
+    model="embed-multilingual-v3.0",
+    input_type="search_document",
+    truncate="END"
+).embeddings
+
+# Embed query
+query_embedding = co.embed(
+    texts=[user_query],
+    model="embed-multilingual-v3.0",
+    input_type="search_query"
+).embeddings
+```
+
+**Why Cohere v3:**
+- State-of-the-art multilingual performance
+- Excellent Arabic language support
+- Separate input types for docs vs queries
+- Lower latency than alternatives
+
+### 3. Advanced Prompt Engineering
+
+**Challenge**: Claude needs to respond in correct language with accurate citations.
+
+**Solution**: Carefully crafted system prompts
+
+```python
+SYSTEM_PROMPT = """You are DEWA's official AI assistant.
+
+Instructions:
+1. Answer ONLY using the provided context documents
+2. If the answer is not in the context, say "I don't have this information"
+3. Respond in the same language as the question (Arabic or English)
+4. Cite the source document for each claim
+5. Be concise and professional
+6. For technical queries, use official terminology
+
+Context Documents:
+{context}
+
+Question: {question}
+
+Answer (in {detected_language}):"""
+
+# Language-specific refinements
+if detected_language == "ar":
+    SYSTEM_PROMPT += """
+    استخدم اللغة العربية الفصحى
+    قدم إجابات واضحة ومهنية
+    """
+```
+
+**Results**: 92% accuracy in maintaining language consistency
+
+### 4. Performance Analytics Dashboard
+
+Built real-time monitoring dashboard tracking:
+- Query volume by language
+- Average response latency
+- Retrieval accuracy metrics
+- User satisfaction (thumbs up/down)
+- Cost per query
+
+## Key Challenges and Solutions
+
+### Challenge 1: Code-Switching Queries
+
+**Example**: "What is تكلفة connection الجديد؟"
+
+**Solution**:
+- Detect dominant language
+- Translate technical terms
+- Search in both languages
+- Respond in dominant language
+
+### Challenge 2: Document Access Control
+
+**Problem**: Different users need access to different documents.
+
+**Solution**:
+- Implemented role-based filtering
+- SharePoint permissions integration
+- Pre-filter chunks before embedding
+- Audit logging for compliance
+
+### Challenge 3: Response Latency
+
+**Target**: < 3 seconds
+
+**Optimizations**:
+1. Async document retrieval
+2. Caching frequent queries
+3. Batch embedding API calls
+4. Streaming LLM responses
+5. CloudFront CDN for static content
+
+**Achieved**: 2.3s average, 3.8s p95
+
+## Results and Impact
+
+### Quantitative Metrics
+- **Response Accuracy**: 92% (measured against test set)
+- **User Satisfaction**: 87% positive feedback
+- **Average Latency**: 2.3 seconds
+- **Query Volume**: 10,000+ queries/day
+- **Language Distribution**: 65% Arabic, 35% English
+
+### Business Impact
+- Reduced customer service call volume by 30%
+- 24/7 instant answers to common questions
+- Improved customer satisfaction scores
+- Freed up human agents for complex issues
+
+### Technical Achievements
+- Successfully deployed enterprise RAG at scale
+- Handled multilingual complexity gracefully
+- Met strict latency and accuracy requirements
+- Stayed within budget constraints
+
+## Tech Stack Summary
+
+| Component | Technology | Why? |
+|-----------|------------|------|
+| LLM | Claude 3 Sonnet | Best Arabic support, instruction following |
+| Embeddings | Cohere v3 | Superior multilingual performance |
+| Vector DB | AWS SageMaker | Enterprise-grade, managed service |
+| Compute | Lambda | Serverless scaling, cost-effective |
+| Storage | SharePoint | Existing document repository |
+| Monitoring | CloudWatch | Integrated AWS monitoring |
+
+## Key Learnings
+
+1. **Multilingual is Complex**: Don't underestimate RTL languages and code-switching
+2. **Prompt Engineering is Critical**: 50% of success came from prompt refinement
+3. **Monitoring is Essential**: Built analytics from day one
+4. **Start Simple**: MVP with basic RAG, then added complexity
+5. **User Feedback Loop**: Thumbs up/down data improved prompts significantly
+
+## Future Enhancements
+
+- [ ] Multi-turn conversations with context
+- [ ] Voice interface (Arabic + English)
+- [ ] Proactive suggestions based on user behavior
+- [ ] Fine-tuned model for DEWA-specific terminology
+- [ ] Integration with transaction systems
+
+## Conclusion
+
+Building a production multilingual RAG chatbot for an enterprise client like DEWA required careful attention to accuracy, latency, cost, and user experience. The combination of Claude 3's strong instruction following, Cohere v3's multilingual embeddings, and AWS's enterprise infrastructure enabled us to deliver a system that handles thousands of queries daily with high satisfaction.
+
+The key to success was:
+- Deep understanding of multilingual challenges
+- Robust testing with real Arabic/English queries
+- Continuous monitoring and iteration
+- Strong partnership with DEWA stakeholders
+
+---
+
+**Technologies**: Claude 3, Cohere v3, AWS SageMaker, AWS Lambda, AWS Bedrock, SharePoint, LangChain, FAISS
+
+**Impact**: Optimized response accuracy across multilingual queries, 87% user satisfaction, 10K+ daily queries
