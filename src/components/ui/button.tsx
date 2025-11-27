@@ -44,6 +44,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : 'button'
     const hasGradient = variant === 'default' || variant === 'gradient'
 
+    if (asChild) {
+      return (
+        <Comp
+          className={cn(buttonVariants({ variant, size, className }))}
+          ref={ref}
+          {...props}
+        />
+      )
+    }
+
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
