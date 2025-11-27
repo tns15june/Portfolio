@@ -1,0 +1,84 @@
+---
+title: "Multilingual Enterprise RAG Chatbot for DEWA"
+description: "Enterprise-grade multilingual chatbot for Dubai Electricity & Water Authority using Claude 3 & Cohere v3 embeddings with AWS SageMaker integration for Arabic/English document processing."
+publishedAt: "2024-09-01"
+tags: ["RAG", "Claude", "Cohere", "AWS", "Multilingual NLP", "Enterprise"]
+featured: true
+company: "Topsource Worldwide"
+impact: "Arabic/English support, enterprise-grade RAG, optimized response accuracy"
+demo: "https://portfolio-k3h5p2lzt-thestai-admins-projects.vercel.app"
+---
+
+## Overview
+
+Led the development of a sophisticated multilingual chatbot for Dubai Electricity & Water Authority (DEWA), one of the largest utility companies in the Middle East. The system provides intelligent query handling in both Arabic and English, leveraging state-of-the-art RAG (Retrieval Augmented Generation) architecture.
+
+## Technical Architecture
+
+### LLM & Embedding Models
+- **Claude 3** for natural language understanding and generation
+- **Cohere v3 embedding models** for semantic search across multilingual documents
+- Advanced prompt engineering for context-aware responses
+- Multilingual query understanding (Arabic & English)
+
+### Cloud Infrastructure
+- **AWS SageMaker**: Model deployment and inference
+- **AWS Lambda**: Serverless compute for scalable request handling
+- **SharePoint Integration**: Seamless document ingestion from enterprise content management
+- **Vector Database**: Efficient semantic search across large document collections
+
+### RAG Pipeline
+1. Document ingestion from SharePoint repositories
+2. Multilingual text extraction and preprocessing
+3. Semantic chunking optimized for Arabic/English content
+4. Cohere v3 embeddings for vector representation
+5. Efficient retrieval with similarity search
+6. Claude 3 generation with retrieved context
+
+## Key Features
+
+- **Bilingual Support**: Native Arabic and English query handling
+- **Enterprise Integration**: Seamless SharePoint document processing
+- **Advanced Prompt Engineering**: Context-aware responses with source attribution
+- **Performance Analytics Dashboard**: Real-time monitoring of query patterns and response quality
+- **Enterprise-Grade Security**: Secure handling of utility company data
+
+## Technical Challenges & Solutions
+
+### Challenge: Multilingual Semantic Understanding
+Arabic and English have vastly different linguistic structures, making it challenging to maintain consistent semantic understanding across languages.
+
+**Solution**: Implemented language-specific preprocessing pipelines with Cohere v3 multilingual embeddings, which excel at cross-lingual semantic similarity. Designed prompt templates that explicitly handle language context switching.
+
+### Challenge: Document Processing at Scale
+DEWA maintains extensive documentation in mixed Arabic/English formats across SharePoint.
+
+**Solution**: Built automated document ingestion pipeline with intelligent language detection, OCR for scanned documents, and optimized chunking strategies that preserve semantic coherence in both languages.
+
+### Challenge: Response Accuracy & Hallucination Prevention
+Critical utility information requires high accuracy and fact-grounding.
+
+**Solution**: Implemented strict RAG retrieval with relevance scoring, source attribution in all responses, and confidence thresholds. Created comprehensive evaluation framework with Middle East stakeholders.
+
+## Impact
+
+- **Enterprise-Grade Performance**: Deployed at scale for DEWA operations
+- **Multilingual Accuracy**: Optimized response accuracy across Arabic and English queries
+- **Stakeholder Satisfaction**: Close collaboration with Middle East stakeholders ensured cultural and linguistic appropriateness
+- **Performance Insights**: Analytics dashboard provides actionable insights into query patterns
+
+## Technologies Used
+
+- **LLMs**: Claude 3 (Anthropic)
+- **Embeddings**: Cohere v3
+- **Cloud**: AWS SageMaker, AWS Lambda
+- **Integration**: SharePoint APIs
+- **Vector DB**: FAISS / ChromaDB
+- **Languages**: Python, FastAPI
+
+## Collaboration & Leadership
+
+- Led development team coordinating with **Middle East stakeholders**
+- Pioneered advanced prompt engineering techniques for multilingual RAG
+- Designed and implemented performance analytics dashboard
+- Established RAG architecture patterns for enterprise deployment

@@ -1,0 +1,79 @@
+---
+title: "Personalized News Recommendation System"
+description: "Built personalized recommendation system using entity recognition & knowledge graphs, significantly boosting user engagement and retention on news platform."
+publishedAt: "2023-06-01"
+tags: ["Recommendation Systems", "NLP", "Knowledge Graphs", "Real-time Processing"]
+featured: false
+company: "Statusneo"
+impact: "Increased user engagement, improved retention, real-time updates"
+---
+
+## Overview
+
+Built a sophisticated personalized recommendation system for a news platform using **entity recognition** and **knowledge graphs** for content relevance improvement. The system integrates trending news summaries with a real-time recommendation engine to boost user engagement and interaction.
+
+## Technical Architecture
+
+### NLP & Entity Recognition
+- Named Entity Recognition (NER) for content tagging
+- Topic modeling and categorization
+- Sentiment analysis for content mood
+- Entity linking to knowledge bases
+
+### Knowledge Graph
+- Graph database for entity relationships
+- Content similarity networks
+- User interest graphs
+- Trending topic tracking
+
+### Recommendation Engine
+- Collaborative filtering
+- Content-based filtering
+- Hybrid recommendation approach
+- Real-time update mechanism
+
+## Key Features
+
+- **Personalized Content**: Tailored news recommendations based on user interests
+- **Entity-Based Matching**: Uses entity recognition to understand content relationships
+- **Trending Integration**: Incorporates trending news summaries
+- **Real-Time Updates**: Dynamic recommendations as news breaks
+- **Enhanced Engagement**: Optimized for user retention and interaction
+
+## Technical Challenges & Solutions
+
+### Challenge: Cold Start Problem
+New users and new articles lacked historical data for recommendations.
+
+**Solution**: Implemented hybrid approach combining content-based filtering (using entities and topics) with popularity-based recommendations for cold start scenarios. Knowledge graphs helped establish initial content relationships.
+
+### Challenge: Real-Time Processing at Scale
+News platform required instant recommendations as new articles published.
+
+**Solution**: Built streaming pipeline for real-time entity extraction and graph updates. Implemented caching strategies and pre-computed similarity scores for frequently accessed content.
+
+### Challenge: Diverse User Interests
+Users had varied and evolving interests requiring adaptive recommendations.
+
+**Solution**: Designed dynamic user interest graphs that updated based on reading patterns, implemented time-decay for evolving preferences, and used entity-level tracking (rather than just article-level) for fine-grained understanding.
+
+## Impact
+
+- **Increased User Engagement**: Significantly boosted interaction across news platform
+- **Improved Retention**: Enhanced user retention through relevant content delivery
+- **Real-Time Relevance**: Dynamic recommendations kept content fresh and timely
+- **Better User Experience**: Personalization led to higher satisfaction metrics
+
+## Technologies Used
+
+- **NLP**: spaCy, Named Entity Recognition, Topic Modeling
+- **Graph DB**: Neo4j / NetworkX for knowledge graphs
+- **Recommendation**: Collaborative & content-based filtering
+- **Real-Time**: Streaming processing for live updates
+- **Backend**: Python, FastAPI
+
+## Innovation
+
+- **Knowledge Graph Integration**: Novel use of entity relationships for news recommendation
+- **Hybrid Approach**: Combined multiple recommendation strategies for robustness
+- **Real-Time Adaptation**: Dynamic system responding to breaking news and trends

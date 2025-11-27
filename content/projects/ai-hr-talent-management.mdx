@@ -1,0 +1,80 @@
+---
+title: "AI-Powered HR System with Talent Management"
+description: "Designed internal HR system with NLP-based skill extraction & JD-CV matching, streamlining recruitment workflows and enhancing hiring decisions through intelligent automation."
+publishedAt: "2022-11-01"
+tags: ["NLP", "HR Tech", "Resume Parsing", "Talent Matching"]
+featured: false
+company: "Statusneo"
+impact: "Improved talent acquisition efficiency, automated candidate matching"
+---
+
+## Overview
+
+Designed an internal HR system leveraging NLP for automated skill extraction and intelligent JD-CV (Job Description-CV) matching. The system enables talent database management, automated candidate-job matching, and recruitment optimization through AI-driven analytics.
+
+## Technical Architecture
+
+### NLP-Based Resume Parsing
+- Automated resume parsing and information extraction
+- Skill extraction using NER and custom pattern matching
+- Experience and education parsing
+- Standardized candidate profile generation
+
+### JD-CV Matching Engine
+- Semantic similarity between job descriptions and resumes
+- Skills-based matching algorithm
+- Experience level matching
+- Cultural fit indicators
+
+### Talent Database
+- Centralized candidate database with rich profiles
+- Skill-based search and filtering
+- Talent pool segmentation
+- Historical hiring pattern analysis
+
+## Key Features
+
+- **Automated Resume Parsing**: Extract structured information from diverse resume formats
+- **Intelligent Matching**: AI-driven candidate-job matching
+- **Skill-Gap Analysis**: Identify skill gaps for workforce planning
+- **Recruitment Analytics**: Data-driven insights for hiring decisions
+- **Workflow Automation**: Streamlined recruitment processes
+
+## Technical Challenges & Solutions
+
+### Challenge: Diverse Resume Formats
+Resumes came in various formats, structures, and languages.
+
+**Solution**: Built robust parsing system handling PDFs, Word documents, and images. Implemented OCR for scanned resumes, created format-agnostic information extraction, and used NER with custom rules for structured data extraction.
+
+### Challenge: Semantic Job-Candidate Matching
+Simple keyword matching missed semantic relationships between skills and requirements.
+
+**Solution**: Implemented semantic embedding-based matching using sentence transformers. Created skill taxonomy with synonym and related-skill mappings. Designed scoring algorithm considering both required and preferred qualifications.
+
+### Challenge: Skill Taxonomy Management
+Needed standardized skill names despite varied terminology in resumes.
+
+**Solution**: Built comprehensive skill taxonomy with synonym mappings, implemented fuzzy matching for skill normalization, and created skills clustering for related competencies.
+
+## Impact
+
+- **Improved Talent Acquisition Efficiency**: Automated candidate screening reduced time-to-hire
+- **Better Hiring Decisions**: AI-driven analytics and matching improved hire quality
+- **Streamlined Workflows**: Automation reduced manual effort in recruitment
+- **Skill-Gap Identification**: Analytics enabled proactive workforce planning
+- **Scalable Talent Management**: System grew with organizational hiring needs
+
+## Technologies Used
+
+- **NLP**: spaCy, Named Entity Recognition, skill extraction
+- **ML**: Sentence transformers, semantic similarity
+- **Resume Parsing**: PDFMiner, python-docx, OCR (Tesseract)
+- **Database**: PostgreSQL for talent database
+- **Backend**: Python, FastAPI
+
+## Innovation
+
+- **End-to-End HR Automation**: Complete pipeline from resume intake to candidate matching
+- **Semantic Understanding**: Beyond keyword matching to skill relationship understanding
+- **Analytics Integration**: Data-driven insights for strategic workforce planning

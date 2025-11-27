@@ -1,0 +1,81 @@
+---
+title: "Multilingual Spell Correction System for Quick Commerce"
+description: "RAG-enhanced spell correction using Llama3-8B & Databricks with semantic retrieval, achieving 7.5% conversion rate increase and 40% token reduction."
+publishedAt: "2024-05-01"
+tags: ["RAG", "LLaMA", "Databricks", "NLP", "Vector Search", "E-commerce"]
+featured: true
+company: "Topsource Worldwide"
+impact: "7.5% conversion increase, 40% token reduction, 18s latency improvement"
+---
+
+## Overview
+
+Architected a production-scale RAG-enhanced spell correction system for quick commerce, handling multilingual queries including vernacular phonetic inputs. The system combines **Llama3-8B** fine-tuning with semantic retrieval to deliver accurate corrections with optimized performance.
+
+## Technical Architecture
+
+### Model & Fine-Tuning
+- **Llama3-8B** as base model
+- Instruct fine-tuning for spell correction task
+- Two-stage architecture: retrieval + generation
+- Optimized for vernacular phonetic inputs
+
+### Databricks Infrastructure
+- **Vector Database**: Semantic product catalog storage
+- **ANN Search**: Approximate Nearest Neighbor for fast retrieval
+- **Distributed Processing**: Batch inference at scale
+- **MLflow**: Model versioning and experimentation
+
+### RAG Pipeline
+1. Query preprocessing and language detection
+2. Vector DB retrieval using semantic similarity
+3. ANN search for candidate products
+4. Llama3-8B correction with context
+5. Confidence scoring and validation
+
+## Key Features
+
+- **Multilingual Support**: Handles English, Hindi, and vernacular phonetic inputs
+- **Semantic Understanding**: Goes beyond character-level corrections to understand user intent
+- **Production Scale**: Handles 1000-query batches efficiently
+- **Token Optimization**: 40% reduction in token count through efficient prompt design
+- **Fast Inference**: 18s latency improvement for batch processing
+
+## Technical Challenges & Solutions
+
+### Challenge: Vernacular Phonetic Inputs
+Users often type product names phonetically in their native language using English characters (e.g., "aalu" for "आलू" / potato).
+
+**Solution**: Built training dataset with phonetic variations, fine-tuned Llama3 with instruction following for phonetic understanding, and implemented semantic retrieval to match intent rather than exact strings.
+
+### Challenge: Latency at Scale
+Initial system had high latency for batch processing, impacting real-time search.
+
+**Solution**: Implemented two-stage architecture where fast vector retrieval narrows candidate space before LLM inference. Optimized prompt templates reducing token count by 40%, and used Databricks distributed processing for parallel batch inference.
+
+### Challenge: Handling Product Catalog Diversity
+Quick commerce catalogs have diverse products with varying naming conventions.
+
+**Solution**: Built comprehensive vector database of product variations, implemented semantic chunking for product descriptions, and designed retrieval strategy that considers product categories and attributes.
+
+## Impact
+
+- **7.5% Conversion Rate Increase**: Improved search accuracy directly boosted conversions
+- **40% Token Reduction**: Optimized prompts reduced inference costs significantly
+- **18s Latency Improvement**: For 1000-query batches, enabling real-time applications
+- **Production Scale**: Successfully deployed handling real user traffic
+
+## Technologies Used
+
+- **LLM**: Llama3-8B with instruct fine-tuning
+- **Platform**: Databricks
+- **Vector DB**: FAISS / Databricks Vector Search
+- **Search**: ANN (Approximate Nearest Neighbor)
+- **Languages**: Python, PySpark
+
+## Technical Innovation
+
+- **RAG-Enhanced Correction**: Novel combination of semantic retrieval with LLM correction
+- **Two-Stage Architecture**: Efficient design balancing accuracy and latency
+- **Vernacular Support**: Pioneered phonetic input handling for Indian languages
+- **Token Optimization**: Achieved significant token reduction while maintaining accuracy

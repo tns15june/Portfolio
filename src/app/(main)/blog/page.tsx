@@ -1,76 +1,65 @@
 import Link from 'next/link'
 import { allPosts } from 'contentlayer/generated'
-import { formatDate } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Clock } from 'lucide-react'
+import { format } from 'date-fns'
 
 export const metadata = {
   title: 'Blog',
-  description: 'Technical articles on AI, ML, and software engineering',
+  description: 'Thoughts and writings on AI, machine learning, and software engineering',
 }
 
 export default function BlogPage() {
-  const posts = allPosts.sort((a, b) =>
-    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  )
+  const posts = allPosts.sort((a, b) => {
+    return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  })
 
   if (posts.length === 0) {
     return (
-      <div className="container max-w-5xl py-12">
-        <div className="space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">Blog</h1>
-          <p className="text-muted-foreground">
-            Technical articles on AI, ML, and software engineering
-          </p>
-        </div>
-        <div className="mt-12 rounded-lg border border-border p-8 text-center">
-          <p className="text-muted-foreground">No blog posts yet. Check back soon!</p>
-        </div>
+      <div className="container max-w-4xl py-12 md:py-16">
+        <h1 className="font-serif text-5xl md:text-6xl mb-8 tracking-tight">Blog</h1>
+        <p className="text-muted-foreground">No blog posts yet. Check back soon!</p>
       </div>
     )
   }
 
   return (
-    <div className="container max-w-5xl py-12">
-      <div className="space-y-4 mb-12">
-        <h1 className="text-4xl font-bold tracking-tight">Blog</h1>
-        <p className="text-lg text-muted-foreground">
-          Technical articles on AI, ML, and software engineering
+    <div className="container max-w-4xl py-12 md:py-16">
+      <div className="space-y-6 mb-16 md:mb-24">
+        <h1 className="font-serif text-5xl md:text-6xl tracking-tight">
+          Blog
+        </h1>
+        <p className="text-lg text-muted-foreground leading-relaxed">
+          Thoughts and writings on AI, machine learning, and software engineering
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="space-y-12">
         {posts.map((post) => (
-          <Link key={post.slug} href={post.url}>
-            <Card className="h-full transition-all hover:shadow-lg">
-              <CardHeader>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <time dateTime={post.publishedAt}>
-                    {formatDate(post.publishedAt)}
-                  </time>
-                  <span>•</span>
-                  <div className="flex items-center gap-1">
-                    <Clock className="h-3 w-3" />
-                    <span>{post.readingTime.text}</span>
-                  </div>
-                </div>
-                <CardTitle className="line-clamp-2">{post.title}</CardTitle>
-                <CardDescription className="line-clamp-3">
-                  {post.summary}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
+          <article key={post.slug} className="group">
+            <Link href={post.url} className="block space-y-3">
+              <div className="flex items-baseline justify-between gap-x-4 flex-wrap">
+                <h2 className="text-2xl md:text-3xl font-medium group-hover:underline decoration-2 underline-offset-4 flex-1">
+                  {post.title}
+                </h2>
+                <time
+                  dateTime={post.publishedAt}
+                  className="text-sm text-muted-foreground whitespace-nowrap"
+                >
+                  {format(new Date(post.publishedAt), 'MMM d, yyyy')}
+                </time>
+              </div>
+              <p className="text-muted-foreground leading-relaxed">
+                {post.summary}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <Badge key={tag} variant="secondary" className="text-xs">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </Link>
+          </article>
         ))}
       </div>
     </div>
