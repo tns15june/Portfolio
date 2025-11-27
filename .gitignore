@@ -41,3 +41,6 @@ next-env.d.ts
 
 # Contentlayer
 .contentlayer
+
+.vercel
+.env*.local
