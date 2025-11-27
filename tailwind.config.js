@@ -51,10 +51,21 @@ module.exports = {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
+      backgroundImage: {
+        'gradient-purple': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        'gradient-pink': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        'gradient-cyan': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+        'gradient-rainbow': 'linear-gradient(135deg, #667eea 0%, #f472b6 50%, #06b6d4 100%)',
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      boxShadow: {
+        'glow-purple': '0 0 20px rgba(102, 126, 234, 0.5)',
+        'glow-pink': '0 0 20px rgba(244, 114, 182, 0.5)',
+        'glow-cyan': '0 0 20px rgba(6, 182, 212, 0.5)',
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)', 'system-ui', '-apple-system', 'sans-serif'],

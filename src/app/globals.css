@@ -10,42 +10,56 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 188 94% 42%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* Vibrant Purple-Pink-Cyan Palette */
+    --primary: 248 73% 68%;  /* #667eea - Purple-Blue */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 330 77% 70%;  /* #f472b6 - Pink */
+    --secondary-foreground: 0 0% 100%;
+    --accent: 188 94% 42%;  /* #06b6d4 - Cyan */
+    --accent-foreground: 0 0% 100%;
+
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 188 94% 42%;
-    --radius: 0.5rem;
+    --ring: 248 73% 68%;
+    --radius: 0.75rem;
+
+    /* Gradient Colors */
+    --gradient-from-purple: #667eea;
+    --gradient-to-purple: #764ba2;
+    --gradient-from-pink: #f093fb;
+    --gradient-to-pink: #f5576c;
+    --gradient-from-cyan: #4facfe;
+    --gradient-to-cyan: #00f2fe;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 217.2 32.6% 9%;
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 188 94% 42%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+
+    /* Vibrant colors in dark mode */
+    --primary: 248 73% 68%;  /* Same vibrant purple */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 330 77% 70%;  /* Same vibrant pink */
+    --secondary-foreground: 0 0% 100%;
+    --accent: 188 94% 52%;  /* Slightly brighter cyan */
+    --accent-foreground: 0 0% 100%;
+
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 188 94% 42%;
+    --ring: 248 73% 68%;
   }
 }
 
@@ -58,7 +72,166 @@
   }
 }
 
+/* Keyframe Animations */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradient-xy {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @layer utilities {
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+    background-size: 200% auto;
+    animation: gradient-x 8s ease infinite;
+  }
+
+  /* Animated Gradient Background */
+  .gradient-mesh {
+    background: radial-gradient(at 27% 37%, hsla(248, 73%, 68%, 0.15) 0px, transparent 50%),
+                radial-gradient(at 97% 21%, hsla(330, 77%, 70%, 0.15) 0px, transparent 50%),
+                radial-gradient(at 52% 99%, hsla(188, 94%, 42%, 0.15) 0px, transparent 50%),
+                radial-gradient(at 10% 29%, hsla(248, 73%, 68%, 0.12) 0px, transparent 50%),
+                radial-gradient(at 97% 96%, hsla(330, 77%, 70%, 0.12) 0px, transparent 50%),
+                radial-gradient(at 33% 50%, hsla(188, 94%, 42%, 0.12) 0px, transparent 50%),
+                radial-gradient(at 79% 53%, hsla(248, 73%, 68%, 0.1) 0px, transparent 50%);
+    background-size: 300% 300%;
+    animation: gradient-xy 15s ease infinite;
+  }
+
+  .dark .gradient-mesh {
+    background: radial-gradient(at 27% 37%, hsla(248, 73%, 68%, 0.2) 0px, transparent 50%),
+                radial-gradient(at 97% 21%, hsla(330, 77%, 70%, 0.2) 0px, transparent 50%),
+                radial-gradient(at 52% 99%, hsla(188, 94%, 52%, 0.2) 0px, transparent 50%),
+                radial-gradient(at 10% 29%, hsla(248, 73%, 68%, 0.15) 0px, transparent 50%),
+                radial-gradient(at 97% 96%, hsla(330, 77%, 70%, 0.15) 0px, transparent 50%),
+                radial-gradient(at 33% 50%, hsla(188, 94%, 52%, 0.15) 0px, transparent 50%),
+                radial-gradient(at 79% 53%, hsla(248, 73%, 68%, 0.12) 0px, transparent 50%);
+    background-size: 300% 300%;
+    animation: gradient-xy 15s ease infinite;
+  }
+
+  /* Glass Effect */
+  .glass {
+    @apply backdrop-blur-md bg-white/70 dark:bg-gray-900/70;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Animations */
+  .animate-gradient {
+    animation: gradient-x 8s ease infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.4s ease-out;
+  }
+
+  /* Staggered Animations */
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   .step {
     counter-increment: step;
   }
