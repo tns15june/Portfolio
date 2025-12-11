@@ -52,10 +52,11 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'gradient-purple': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        'gradient-pink': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-        'gradient-cyan': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-        'gradient-rainbow': 'linear-gradient(135deg, #667eea 0%, #f472b6 50%, #06b6d4 100%)',
+        'gradient-purple': 'linear-gradient(135deg, #7c3aed 0%, #9333ea 100%)',
+        'gradient-pink': 'linear-gradient(135deg, #ec4899 0%, #f43f5e 100%)',
+        'gradient-cyan': 'linear-gradient(135deg, #00d4d4 0%, #06ffd4 100%)',
+        'gradient-rainbow': 'linear-gradient(135deg, #7c3aed 0%, #ec4899 50%, #00d4d4 100%)',
+        'gradient-vibrant': 'linear-gradient(135deg, #7c3aed 0%, #ec4899 25%, #00d4d4 50%, #ec4899 75%, #7c3aed 100%)',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -63,9 +64,10 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
       boxShadow: {
-        'glow-purple': '0 0 20px rgba(102, 126, 234, 0.5)',
-        'glow-pink': '0 0 20px rgba(244, 114, 182, 0.5)',
-        'glow-cyan': '0 0 20px rgba(6, 182, 212, 0.5)',
+        'glow-purple': '0 0 25px rgba(124, 58, 237, 0.6), 0 0 50px rgba(124, 58, 237, 0.3)',
+        'glow-pink': '0 0 25px rgba(236, 72, 153, 0.6), 0 0 50px rgba(236, 72, 153, 0.3)',
+        'glow-cyan': '0 0 25px rgba(0, 212, 212, 0.6), 0 0 50px rgba(0, 212, 212, 0.3)',
+        'glow-multi': '0 0 25px rgba(124, 58, 237, 0.5), 0 0 50px rgba(236, 72, 153, 0.3), 0 0 75px rgba(0, 212, 212, 0.2)',
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)', 'system-ui', '-apple-system', 'sans-serif'],
