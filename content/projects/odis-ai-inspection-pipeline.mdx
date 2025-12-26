@@ -1,0 +1,111 @@
+---
+title: "ODIS AI Inspection Pipeline"
+description: "Event-driven AWS SageMaker pipeline for offshore inspection analysis using Claude Sonnet 4.5 and TwelveLabs for image/video processing."
+publishedAt: "2024-10-01"
+tags: ["Computer Vision", "AWS SageMaker", "Claude", "Video Analysis", "MLOps", "Lambda"]
+featured: true
+company: "ODIS"
+impact: "30-40% cost reduction, 95%+ success rate, 100+ concurrent executions"
+---
+
+## Overview
+
+Built an event-driven AI inspection pipeline that automates offshore infrastructure analysis. The system processes images and videos from field inspections, leveraging state-of-the-art vision-language models to generate structured JSON reports for engineering teams.
+
+## Technical Architecture
+
+### Event-Driven Processing
+- **AWS SageMaker Pipeline**: Automated workflow orchestration
+- **Lambda-Based Orchestration**: Serverless event processing
+- **S3 Event Triggers**: Automatic processing on asset upload
+- **Step Functions**: Complex workflow state management
+
+### Vision & Language Models
+- **Claude Sonnet 4.5** (AWS Bedrock): Advanced image understanding and report generation
+- **TwelveLabs**: Specialized video analysis and temporal understanding
+- Multi-modal reasoning for complex inspection scenarios
+- Structured JSON output for downstream integration
+
+### Data Processing
+- **OpenCV**: Image preprocessing and enhancement
+- **FFmpeg**: Video transcoding and frame extraction
+- **Pydantic**: Strict schema validation for outputs
+- Automated quality checks and format standardization
+
+## S3 Caching Strategy
+
+Implemented intelligent caching layer achieving significant cost reduction:
+
+### Cache Architecture
+- Content-addressable storage for processed results
+- TTL-based cache invalidation policies
+- Hierarchical caching (raw to processed to analyzed)
+- **30-40% Cost Reduction** through cache hits
+
+### Cache Optimization
+- Hash-based deduplication for similar assets
+- Incremental processing for updated content
+- Warm cache strategies for common inspection types
+- Cost-aware cache eviction policies
+
+## Quality Assurance
+
+### DeepEval Framework
+Comprehensive evaluation pipeline ensuring output quality:
+
+- **20+ Quality Metrics**: Accuracy, completeness, consistency
+- **Faithfulness Scoring**: Grounded observations vs. hallucination detection
+- **Schema Compliance**: Structural validation of JSON outputs
+- **Domain-Specific Checks**: Engineering terminology accuracy
+
+### Continuous Monitoring
+- Automated quality regression alerts
+- Model performance tracking over time
+- Human-in-the-loop validation sampling
+- Quality dashboards for stakeholders
+
+## Scalability & Performance
+
+### Concurrent Processing
+- **100+ Concurrent Executions**: Parallel inspection processing
+- **95%+ Success Rate**: Robust error handling and retry logic
+- Auto-scaling based on queue depth
+- Priority queuing for urgent inspections
+
+### Performance Optimization
+- Batch inference for efficiency
+- GPU instance pooling
+- Async processing with callback notifications
+- Graceful degradation under load
+
+## Report Generation
+
+### Structured Outputs
+- **JSON Reports**: Machine-readable inspection data
+- Defect classification and severity scoring
+- Location mapping and asset identification
+- Temporal analysis for video inspections
+
+### Integration Points
+- REST API for report retrieval
+- Webhook notifications on completion
+- PostgreSQL storage for historical analysis
+- Dashboard visualization for engineering teams
+
+## Technologies Used
+
+- **Vision Models**: Claude Sonnet 4.5, TwelveLabs
+- **Cloud**: AWS SageMaker, Lambda, S3, Step Functions
+- **Database**: PostgreSQL
+- **Processing**: OpenCV, FFmpeg
+- **Validation**: Pydantic, DeepEval
+- **Languages**: Python, TypeScript
+- **Infrastructure**: Docker, AWS CDK
+
+## Impact
+
+- **Cost Efficiency**: 30-40% reduction through intelligent caching
+- **Scale**: 100+ concurrent inspection processing
+- **Reliability**: 95%+ success rate with robust error handling
+- **Automation**: End-to-end pipeline from upload to structured report
+- **Quality**: Comprehensive evaluation framework ensuring accuracy

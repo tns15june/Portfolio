@@ -17,9 +17,14 @@ This is a **Next.js 14 portfolio site** using the App Router with **Contentlayer
 
 ### Content System
 - **Contentlayer** processes MDX files from `content/` directory into type-safe JSON
+- Next.js config uses `withContentlayer` wrapper in `next.config.js`
 - Two document types defined in `contentlayer.config.ts`:
-  - `Post`: Blog posts from `content/blog/*.mdx` (fields: title, publishedAt, summary, tags, featured, image)
-  - `Project`: Projects from `content/projects/*.mdx` (fields: title, description, publishedAt, tags, featured, image, github, demo, company, impact)
+  - `Post`: Blog posts from `content/blog/*.mdx`
+    - Required: `title`, `publishedAt`, `summary`, `tags`
+    - Optional: `featured`, `image`
+  - `Project`: Projects from `content/projects/*.mdx`
+    - Required: `title`, `description`, `publishedAt`, `tags`
+    - Optional: `featured`, `image`, `github`, `demo`, `company`, `impact`
 - Computed fields: `slug`, `readingTime`, `url`
 - Import content via `import { allPosts, allProjects } from 'contentlayer/generated'`
 
@@ -41,5 +46,7 @@ This is a **Next.js 14 portfolio site** using the App Router with **Contentlayer
 ### Key Patterns
 - Path alias: `@/*` maps to `./src/*`
 - `cn()` utility from `src/lib/utils.ts` for merging Tailwind classes
+- `formatDate()` utility for consistent date formatting
 - MDX components customized in `src/components/mdx/mdx-components.tsx`
 - Code syntax highlighting via `rehype-pretty-code` with `github-dark`/`github-light` themes
+- MDX plugins: `remark-gfm` (GitHub Flavored Markdown), `rehype-slug`, `rehype-autolink-headings`

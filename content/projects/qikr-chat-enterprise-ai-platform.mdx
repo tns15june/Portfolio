@@ -1,0 +1,106 @@
+---
+title: "Qikr Chat - Enterprise AI Chat Platform"
+description: "Production-grade RAG pipeline with AWS Bedrock, OpenSearch, and multi-model LLM support featuring agentic tools and real-time streaming."
+publishedAt: "2024-11-01"
+tags: ["RAG", "AWS Bedrock", "Claude", "OpenSearch", "Agentic AI", "WebSocket", "Enterprise"]
+featured: true
+company: "Qikr"
+impact: "Multi-model LLM support, real-time streaming, agentic framework, production safety"
+---
+
+## Overview
+
+Architected and implemented a production-grade enterprise AI chat platform featuring advanced RAG capabilities, multi-model LLM support, and an innovative agentic tool framework. The platform enables organizations to leverage their knowledge bases through intelligent conversational AI with real-time streaming responses.
+
+## Technical Architecture
+
+### RAG Pipeline
+- **AWS Bedrock**: Core LLM inference with multi-model support
+- **OpenSearch**: Vector search and semantic retrieval at scale
+- **AWS Step Functions**: Orchestrated document ingestion, chunking, and embedding workflows
+- **Intelligent Chunking**: Optimized document segmentation for context preservation
+
+### Multi-Model LLM Support
+- **Claude** (Anthropic): Primary model for complex reasoning and generation
+- **Amazon Nova**: Cost-effective alternative for simpler queries
+- **Mistral**: High-performance open model for specific use cases
+- Dynamic model routing based on query complexity and cost optimization
+
+### Real-Time Communication
+- **WebSocket Integration**: Low-latency streaming responses
+- Token-by-token streaming for improved user experience
+- Connection state management and automatic reconnection
+- Concurrent session handling at scale
+
+## Agentic Tool Framework
+
+Developed a sophisticated agentic architecture enabling the AI to perform complex multi-step tasks:
+
+### Knowledge Retrieval Agent
+- Semantic search across enterprise document repositories
+- Contextual ranking and relevance scoring
+- Source attribution and citation generation
+
+### Lesson Planning Agent
+- Automated curriculum generation based on learning objectives
+- Adaptive content structuring for different skill levels
+- Integration with educational content repositories
+
+### Quiz Generation Agent
+- Dynamic assessment creation from source materials
+- Multiple question formats (MCQ, short answer, essay prompts)
+- Difficulty calibration based on content complexity
+
+## Safety & Evaluation
+
+### Bedrock Guardrails
+- Content moderation for input and output
+- PII detection and redaction
+- Topic filtering for off-limits subjects
+- Custom policy enforcement for enterprise compliance
+
+### Evaluation Pipeline
+- **DeepEval Integration**: Comprehensive LLM evaluation framework
+- 20+ evaluation metrics including faithfulness, relevance, and coherence
+- Automated regression testing for model updates
+- A/B testing infrastructure for prompt optimization
+
+## Cost Optimization
+
+### Usage Metrics & Monitoring
+- Token consumption tracking per user/organization
+- Cost attribution and chargeback reporting
+- **CloudWatch Integration**: Real-time monitoring and alerting
+- Automated cost anomaly detection
+
+### Optimization Strategies
+- Intelligent caching for repeated queries
+- Model tiering based on query complexity
+- Prompt optimization for token efficiency
+- Batch processing for non-interactive workloads
+
+## Key Features
+
+- **Enterprise SSO**: Seamless authentication integration
+- **Role-Based Access**: Granular permission control
+- **Audit Logging**: Comprehensive activity tracking
+- **Multi-Tenancy**: Isolated environments per organization
+- **API Gateway**: RESTful APIs for third-party integration
+
+## Technologies Used
+
+- **LLMs**: Claude, Amazon Nova, Mistral (via AWS Bedrock)
+- **Vector Search**: OpenSearch
+- **Orchestration**: AWS Step Functions, Lambda
+- **Real-Time**: WebSocket, API Gateway
+- **Monitoring**: CloudWatch, DeepEval
+- **Languages**: Python, TypeScript
+- **Infrastructure**: AWS CDK, Docker
+
+## Impact
+
+- **Production Deployment**: Serving enterprise customers at scale
+- **Multi-Model Flexibility**: Optimized cost-performance across use cases
+- **Agentic Capabilities**: Advanced tool use beyond simple Q&A
+- **Enterprise-Grade Safety**: Comprehensive guardrails for production use
+- **Observable AI**: Full visibility into system performance and costs
