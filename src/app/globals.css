@@ -218,7 +218,6 @@
   }
 
   .gradient-text-shimmer {
-    @apply bg-clip-text text-transparent;
     background: linear-gradient(
       90deg,
       hsl(var(--primary)) 0%,
@@ -228,6 +227,10 @@
       hsl(var(--primary)) 100%
     );
     background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     animation: text-shimmer 6s ease-in-out infinite;
     will-change: background-position;
   }
