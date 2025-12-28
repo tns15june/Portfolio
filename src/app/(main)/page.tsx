@@ -166,7 +166,7 @@ export default function Home() {
             </h2>
             <div className="prose prose-neutral dark:prose-invert max-w-none">
               <p className="text-lg text-foreground/80 leading-relaxed">
-                I'm an AI/ML Engineer passionate about advancing the field through both research and production systems.
+                I'm an AI Engineer passionate about advancing the field through both research and production systems.
                 My expertise spans the full AI lifecycle—from experimental prototyping to scalable deployment.
               </p>
               <p className="text-lg text-foreground/80 leading-relaxed mt-4">

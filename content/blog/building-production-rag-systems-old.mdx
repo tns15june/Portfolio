@@ -1,12 +1,12 @@
 ---
 title: "Building Production-Ready RAG Systems: A Comprehensive Guide"
 publishedAt: "2025-01-15"
-summary: "Learn how to build Retrieval-Augmented Generation systems that scale in production, from architecture to deployment. Insights from building the DEWA multilingual chatbot."
+summary: "Learn how to build Retrieval-Augmented Generation systems that scale in production, from architecture to deployment. Insights from building enterprise multilingual chatbots."
 tags: ["RAG", "LLM", "Vector Databases", "Production ML", "Architecture"]
 featured: true
 ---
 
-Building production-ready RAG (Retrieval-Augmented Generation) systems requires more than just connecting an LLM to a vector database. Based on my experience building the DEWA multilingual enterprise chatbot using Claude 3 and Cohere v3, here's a comprehensive guide to building RAG systems that actually work at scale.
+Building production-ready RAG (Retrieval-Augmented Generation) systems requires more than just connecting an LLM to a vector database. Based on my experience building multilingual enterprise chatbots using Claude 3 and Cohere v3, here's a comprehensive guide to building RAG systems that actually work at scale.
 
 ## What is RAG and When to Use It
 
@@ -49,7 +49,7 @@ chunks = text_splitter.split_documents(documents)
 
 ### 2. Embedding Strategy
 
-For the DEWA project, we used Cohere v3 embeddings which excel at multilingual scenarios:
+For the enterprise project, we used Cohere v3 embeddings which excel at multilingual scenarios:
 
 ```python
 from cohere import Client
@@ -99,7 +99,7 @@ results = vectorstore.similarity_search_with_score(
 This is where RAG systems succeed or fail:
 
 ```python
-prompt_template = """You are an expert assistant for DEWA.
+prompt_template = """You are an expert assistant for the enterprise.
 Use the following context to answer the question. If the answer
 is not in the context, say "I don't have enough information."
 
@@ -147,7 +147,7 @@ final_results = rerank(semantic_results + keyword_results, query)
 - Use streaming responses
 - Parallel retrieval and reranking
 
-We achieved **2.3s average response time** on the DEWA chatbot with these optimizations.
+We achieved **2.3s average response time** on the enterprise chatbot with these optimizations.
 
 ### Challenge 3: Answer Quality and Hallucinations
 
@@ -176,7 +176,7 @@ Track these metrics in production:
 4. **Cost**: Embedding + LLM API costs per query
 5. **User Satisfaction**: Thumbs up/down, CSAT scores
 
-Our DEWA chatbot metrics:
+Our enterprise chatbot metrics:
 - **92% retrieval accuracy** (relevant doc in top 5)
 - **2.3s average latency**
 - **87% user satisfaction** rate
@@ -236,7 +236,7 @@ Build a comprehensive test suite:
 ```python
 test_cases = [
     {
-        "query": "What is DEWA's customer service number?",
+        "query": "What is the customer service number?",
         "expected_answer": "04-601-9999",
         "language": "en"
     },

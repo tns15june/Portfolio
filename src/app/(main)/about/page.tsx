@@ -37,7 +37,7 @@ const researchInterests = [
 
 const experience = [
   {
-    company: 'Topsource Worldwide',
+    company: 'Topsource',
     role: 'Senior Data Scientist',
     period: 'November 2023 – Present',
     location: 'Remote, India',
@@ -68,7 +68,7 @@ export default function AboutPage() {
 
           <div className="prose prose-neutral dark:prose-invert max-w-none">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm Tarkeshwar Narayan Sharma, a Senior AI/ML Engineer with 9 years of experience building production AI systems at enterprise scale. I specialize in <span className="text-primary font-medium">Generative AI</span>, <span className="text-secondary font-medium">RAG architectures</span>, and <span className="text-accent font-medium">multilingual NLP</span>, with a proven track record of delivering measurable business impact.
+              I'm Tarkeshwar Narayan Sharma, a Senior AI Engineer with 9 years of experience building production AI systems at enterprise scale. I specialize in <span className="text-primary font-medium">Generative AI</span>, <span className="text-secondary font-medium">RAG architectures</span>, and <span className="text-accent font-medium">multilingual NLP</span>, with a proven track record of delivering measurable business impact.
             </p>
           </div>
 
