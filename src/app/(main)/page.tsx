@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { allProjects } from 'contentlayer/generated'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Sparkles, TrendingUp, DollarSign, Zap, Brain, Cpu, Globe } from 'lucide-react'
+import { ArrowRight, Sparkles, TrendingUp, DollarSign, Zap, Brain, Cpu, Globe, Briefcase, MessageSquare } from 'lucide-react'
 import { AnimatedSection } from '@/components/ui/animated-section'
 
 export default function Home() {
@@ -30,12 +30,20 @@ export default function Home() {
       <section className="relative overflow-hidden gradient-mesh min-h-[85vh] flex items-center">
         <div className="container max-w-5xl py-20 md:py-32 relative z-10">
           <div className="max-w-4xl animate-fade-in-up">
-            {/* Available Badge */}
-            <div className="mb-6 inline-block animate-glow-pulse-intense rounded-full">
-              <Badge variant="glass" className="text-sm py-2 px-4">
-                <Sparkles className="w-3 h-3 mr-1.5 inline animate-icon-bounce" />
-                Available for Work
-              </Badge>
+            {/* Availability Badges */}
+            <div className="mb-6 flex flex-wrap gap-3">
+              <div className="animate-glow-pulse-intense rounded-full">
+                <Badge variant="glass" className="text-sm py-2 px-4">
+                  <Briefcase className="w-3 h-3 mr-1.5 inline animate-icon-bounce" />
+                  Open to Top AI Roles
+                </Badge>
+              </div>
+              <div className="animate-glow-pulse-intense rounded-full" style={{ animationDelay: '0.5s' }}>
+                <Badge variant="glass" className="text-sm py-2 px-4">
+                  <MessageSquare className="w-3 h-3 mr-1.5 inline animate-icon-bounce" />
+                  Available for Consulting
+                </Badge>
+              </div>
             </div>
 
             {/* Animated Gradient Title */}
