@@ -38,7 +38,7 @@ const researchInterests = [
 const experience = [
   {
     company: 'Topsource',
-    role: 'Senior Data Scientist',
+    role: 'Senior AI Engineer',
     period: 'November 2023 – Present',
     location: 'Remote, India',
   },
